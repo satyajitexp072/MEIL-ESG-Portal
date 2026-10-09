@@ -1,0 +1,16 @@
+{
+  "name": "meil-esg-portal",
+  "version": "1.0.0",
+  "description": "Centralized ESG Data Management & BRSR Section C Reporting Portal for Megha Engineering & Infrastructures Limited (MEIL)",
+  "scripts": {
+    "server": "npm --prefix server start",
+    "server:dev": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "client:build": "npm --prefix client run build",
+    "seed": "npm --prefix server run seed",
+    "dev": "npm run server"
+  },
+  "keywords": ["esg", "brsr", "meil", "sebi", "scope1", "scope2", "carbon-accounting"],
+  "author": "MEIL ESG Development Team",
+  "license": "MIT"
+}
