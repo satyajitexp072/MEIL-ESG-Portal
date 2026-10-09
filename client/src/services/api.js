@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE = '/api';
+// Configurable API base URL: defaults to /api in local dev (handled by Vite proxy),
+// and uses VITE_API_BASE_URL (e.g. https://meil-esg-backend.onrender.com/api) in production.
+const rawBase = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE = rawBase.replace(/\/+$/, '');
 
 const api = axios.create({
   baseURL: API_BASE,
@@ -10,6 +13,10 @@ api.interceptors.request.use((config) => {
   const token = localStorage.getItem('meil_auth_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
+  }
+  // Prevent duplicate /api if baseURL already includes /api and request URL starts with /api/
+  if (config.baseURL?.endsWith('/api') && config.url?.startsWith('/api/')) {
+    config.url = config.url.replace(/^\/api/, '');
   }
   return config;
 });

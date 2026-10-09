@@ -1,15 +1,18 @@
-```gitignore
 # Dependencies
 node_modules/
 **/node_modules/
 
 # Environment secrets
 .env
-.env.*
+.env.local
+.env.*.local
 **/.env
-**/.env.*
+**/.env.local
+**/.env.*.local
 !.env.example
 !**/.env.example
+!.env.production
+!**/.env.production
 
 # Build output
 dist/
@@ -25,4 +28,3 @@ Thumbs.db
 
 # Generated test evidence
 server/uploads/evidence-test-*.pdf
-```
